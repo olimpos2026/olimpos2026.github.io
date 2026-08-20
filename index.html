@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#dfeeee">
+<title>Olimpos Tanrıları | Katılım Protokolü</title>
+<style>
+:root{
+  --bg:#e6f0ef; --cream:#fffaf2; --card:#ffffff; --ink:#15211d; --muted:#68716c;
+  --green:#2e6e63; --teal:#52c7bb; --navy:#263b86; --line:#e8ece9; --shadow:0 18px 42px rgba(34,73,67,.14);
+}
+*{box-sizing:border-box}
+body{
+  margin:0; min-height:100vh; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif; color:var(--ink);
+  background:linear-gradient(180deg,#deefec 0 31%,var(--cream) 31% 100%);
+}
+.app{max-width:430px; margin:auto; min-height:100vh; position:relative; padding-bottom:92px}
+.hero{
+  position:relative; height:322px; overflow:hidden; padding:18px 16px 0;
+  background:linear-gradient(180deg,#dceeee,#dceeee);
+}
+.topbar{display:flex;justify-content:space-between;align-items:center;position:relative;z-index:4}
+.logo-badge{
+  width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.88);display:grid;place-items:center;
+  font-weight:900;color:var(--green);box-shadow:0 8px 18px rgba(0,0,0,.08);border:1px solid rgba(0,0,0,.04)
+}
+.step-pill{
+  padding:10px 16px;border-radius:999px;background:rgba(255,255,255,.84);font-size:11px;font-weight:900;color:var(--green);
+  box-shadow:0 6px 14px rgba(0,0,0,.05)
+}
+.hero-art{
+  position:absolute; inset:0 0 84px 0; background:url('hero-gods.jpg') center top/cover no-repeat;
+  filter:saturate(.96) contrast(1.02);
+}
+.hero-fade{
+  position:absolute; left:0; right:0; bottom:84px; height:90px;
+  background:linear-gradient(180deg,rgba(220,238,238,0), rgba(220,238,238,.55) 35%, rgba(220,238,238,.92) 100%);
+}
+.hero-title{
+  position:absolute; left:18px; right:18px; bottom:42px; text-align:center; z-index:4;
+}
+.hero-title small{
+  display:block; font-size:12px; font-weight:900; letter-spacing:.17em; color:#153229;
+  text-shadow:0 1px 0 rgba(255,255,255,.55); margin-bottom:8px
+}
+.hero-title h1{
+  margin:0; font-size:34px; line-height:1; font-weight:900; color:#13201c;
+  text-shadow:0 3px 0 rgba(255,255,255,.35)
+}
+.cloud-cut{
+  position:absolute; left:-6%; right:-6%; bottom:-18px; height:100px; z-index:3;
+  background:var(--cream);
+  clip-path:polygon(0 70%,5% 62%,12% 70%,18% 56%,26% 69%,34% 58%,43% 73%,52% 57%,61% 72%,69% 59%,77% 68%,84% 55%,91% 70%,100% 60%,100% 100%,0 100%);
+  box-shadow:0 -8px 16px rgba(255,255,255,.25)
+}
+.panel{
+  margin:-2px 12px 0; background:var(--cream); border-radius:30px 30px 0 0; padding:22px 18px 20px; min-height:470px; position:relative; z-index:5
+}
+.card{background:var(--card);border-radius:22px;padding:18px;box-shadow:var(--shadow);border:1px solid rgba(48,92,83,.06)}
+.step{display:none}.step.active{display:block}
+.eyebrow{font-size:11px;color:var(--green);font-weight:900;letter-spacing:.13em;text-transform:uppercase}
+h2{font-size:28px;line-height:1.05;margin:7px 0 8px}
+p{color:var(--muted);line-height:1.45;margin:0 0 14px}
+.progress{display:flex;gap:7px;margin:15px 0 18px}
+.progress i{height:5px;flex:1;border-radius:999px;background:#e5ece9}
+.progress i.on{background:linear-gradient(90deg,var(--teal),var(--navy))}
+.field{margin-top:14px}
+.field label{display:block;font-size:11px;font-weight:900;color:#46504c;margin-bottom:7px;letter-spacing:.03em}
+.field input,.field textarea{
+  width:100%;border:1px solid var(--line);background:#fbfcfb;border-radius:16px;padding:14px;font-size:16px;outline:none;transition:.18s
+}
+.field textarea{min-height:90px;resize:vertical}
+.field input:focus,.field textarea:focus{border-color:#9bded6;box-shadow:0 0 0 4px rgba(78,199,186,.12)}
+.choice-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.choice{
+  border:1px solid var(--line);background:#fff;border-radius:18px;padding:16px 12px;font-weight:900;color:#48514e;box-shadow:0 7px 16px rgba(0,0,0,.04)
+}
+.choice.selected{border-color:#76d4ca;background:#eafaf7;color:#23675f}
+.hidden{display:none!important}
+.actions{display:flex;gap:10px;margin-top:18px}
+.btn{border:0;border-radius:16px;padding:15px 17px;font-size:15px;font-weight:900}
+.btn.primary{flex:1;color:#fff;background:linear-gradient(135deg,var(--teal),var(--navy));box-shadow:0 11px 24px rgba(49,77,160,.23)}
+.btn.secondary{background:#eef2f0;color:#4a5350}
+.info-strip{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0 16px}
+.info{background:#fff;border-radius:18px;padding:13px;border:1px solid var(--line);display:flex;gap:10px;align-items:center}
+.ico{width:38px;height:38px;border-radius:14px;display:grid;place-items:center;background:#eefaf8;font-size:18px}
+.info b{display:block;font-size:12px}.info small{color:var(--muted);font-size:10px}
+.consent{display:flex;gap:10px;align-items:flex-start;padding:12px;margin-top:9px;border:1px solid var(--line);border-radius:16px;background:#fff}
+.consent input{width:20px;height:20px;accent-color:var(--green);margin-top:1px}
+.consent label{font-size:12px;line-height:1.45;color:#4e5854}
+.legal{background:#fff8e7;border:1px solid #f0dfb2;border-radius:17px;padding:13px;font-size:12px;line-height:1.45;color:#665d4b}
+.success{text-align:center;padding:15px 2px}
+.success .orb{width:78px;height:78px;border-radius:50%;margin:0 auto 16px;display:grid;place-items:center;background:linear-gradient(135deg,#d6f6ef,#dfe6ff);font-size:34px}
+.demo-note{margin-top:14px;padding:11px;border-radius:14px;background:#fff7e6;border:1px dashed #e5bd74;font-size:11px;color:#8a6534}
+.bottom-nav{
+  position:fixed;left:50%;bottom:12px;transform:translateX(-50%);width:min(406px,calc(100% - 24px));height:68px;background:rgba(255,255,255,.94);
+  border-radius:22px;box-shadow:0 16px 38px rgba(30,58,53,.18);display:grid;grid-template-columns:repeat(4,1fr);align-items:center;padding:0 12px;backdrop-filter:blur(14px);z-index:9
+}
+.nav-item{text-align:center;font-size:10px;color:#8a9590;font-weight:800}
+.nav-item .dot{width:38px;height:38px;border-radius:14px;margin:0 auto 3px;display:grid;place-items:center;font-size:17px}
+.nav-item.active{color:#263b86}.nav-item.active .dot{background:#eaf0ff}
+@media(max-width:360px){h2{font-size:24px}.hero-title h1{font-size:30px}.hero{height:300px}}
+</style>
+</head>
+<body>
+<div class="app">
+  <section class="hero">
+    <div class="topbar">
+      <div class="logo-badge">∞</div>
+      <div class="step-pill">OLİMPOS TANRILARI</div>
+    </div>
+    <div class="hero-art"></div>
+    <div class="hero-fade"></div>
+    <div class="hero-title">
+      <small>İYİ Kİ SANAT VAR</small>
+      <h1>Katılım Protokolü</h1>
+    </div>
+    <div class="cloud-cut"></div>
+  </section>
+
+  <section class="panel">
+    <div class="progress" id="progress"><i class="on"></i><i></i><i></i><i></i><i></i></div>
+
+    <div class="step active" data-step="0">
+      <div class="card">
+        <div class="eyebrow">Hoş geldiniz</div>
+        <h2>Macera başlamadan önce ✨</h2>
+        <p>Etkinliğe güvenli katılım için kısa formu tamamlayın. Yaklaşık 2 dakika sürer.</p>
+        <div class="info-strip">
+          <div class="info"><div class="ico">📅</div><div><b>5–6 Eylül</b><small>Cumartesi • Pazar</small></div></div>
+          <div class="info"><div class="ico">🛡️</div><div><b>Güvenli Katılım</b><small>Sağlık & acil durum</small></div></div>
+        </div>
+        <button class="btn primary" onclick="go(1)">Forma Başla</button>
+      </div>
+    </div>
+
+    <div class="step" data-step="1">
+      <div class="card">
+        <div class="eyebrow">1 / 4</div>
+        <h2>Katılımcı bilgileri</h2>
+        <p>Temel iletişim bilgilerinizi girin.</p>
+        <div class="field"><label>AD SOYAD *</label><input id="name" placeholder="Adınız ve soyadınız"></div>
+        <div class="field"><label>TELEFON NUMARASI *</label><input id="phone" type="tel" placeholder="05XX XXX XX XX"></div>
+        <div class="field"><label>DOĞUM TARİHİ *</label><input id="birth" type="date"></div>
+        <div class="field"><label>KAN GRUBU *</label><input id="blood" placeholder="Örn. A Rh+"></div>
+        <div class="actions"><button class="btn secondary" onclick="go(0)">Geri</button><button class="btn primary" onclick="personal()">Devam</button></div>
+      </div>
+    </div>
+
+    <div class="step" data-step="2">
+      <div class="card">
+        <div class="eyebrow">2 / 4</div>
+        <h2>Sağlık beyanı</h2>
+        <p>Etkinlik sırasında ekibimizin bilmesi gereken bir sağlık durumunuz var mı?</p>
+        <div class="choice-grid">
+          <button class="choice" id="no" onclick="health('Herhangi bir sağlık sorunum yok')">🙂 Hayır, yok</button>
+          <button class="choice" id="yes" onclick="health('Sağlık sorunum var')">🩺 Evet, var</button>
+        </div>
+        <div id="healthBox" class="field hidden"><label>AÇIKLAMA *</label><textarea id="healthText" placeholder="Rahatsızlık, alerji, düzenli kullanılan ilaç vb."></textarea></div>
+        <div class="actions"><button class="btn secondary" onclick="go(1)">Geri</button><button class="btn primary" onclick="healthNext()">Devam</button></div>
+      </div>
+    </div>
+
+    <div class="step" data-step="3">
+      <div class="card">
+        <div class="eyebrow">3 / 4</div>
+        <h2>Acil durum kişisi</h2>
+        <p>Gerektiğinde ulaşabileceğimiz bir yakınınızı ekleyin.</p>
+        <div class="field"><label>ADI SOYADI *</label><input id="emergencyName" placeholder="Ad Soyad"></div>
+        <div class="field"><label>YAKINLIK DERECESİ *</label><input id="relation" placeholder="Eş, kardeş, arkadaş..."></div>
+        <div class="field"><label>TELEFON *</label><input id="emergencyPhone" type="tel" placeholder="05XX XXX XX XX"></div>
+        <div class="actions"><button class="btn secondary" onclick="go(2)">Geri</button><button class="btn primary" onclick="emergency()">Devam</button></div>
+      </div>
+    </div>
+
+    <div class="step" data-step="4">
+      <div class="card">
+        <div class="eyebrow">4 / 4</div>
+        <h2>Beyan ve onay</h2>
+        <div class="legal"><strong>Katılım Beyanı — Taslak</strong><br>Etkinliğe kendi irademle katıldığımı, verdiğim bilgilerin doğru olduğunu; acil sağlık durumunda organizasyon ekibinin sağlık ekipleriyle ve bildirdiğim acil durum kişisiyle iletişim kurabileceğini beyan ederim. Nihai kullanım öncesinde KVKK ve hukuki metinler kontrol edilmelidir.</div>
+        <div class="consent"><input id="c1" type="checkbox"><label for="c1">Aydınlatma metnini okudum ve bilgilendirildim.</label></div>
+        <div class="consent"><input id="c2" type="checkbox"><label for="c2">Sağlık bilgilerimin etkinlik güvenliği amacıyla işlenmesine açık rıza veriyorum.</label></div>
+        <div class="consent"><input id="c3" type="checkbox"><label for="c3">Acil durumda bildirdiğim kişiyle iletişim kurulmasını kabul ediyorum.</label></div>
+        <div class="actions"><button class="btn secondary" onclick="go(3)">Geri</button><button class="btn primary" id="submitBtn" onclick="finish()">Katılımımı Onayla</button></div>
+      </div>
+    </div>
+
+    <div class="step" data-step="5">
+      <div class="card success">
+        <div class="orb">✅</div>
+        <h2>Kaydınız alındı ✅</h2>
+        <p>Katılım bilgileriniz başarıyla gönderildi.</p>
+        <div class="demo-note">Bilgileriniz organizasyon ekibinin kayıt tablosuna iletildi.</div>
+      </div>
+    </div>
+  </section>
+
+  <iframe name="hidden_iframe" id="hidden_iframe" style="display:none"></iframe>
+  <form id="googleForm"
+        action="https://docs.google.com/forms/d/e/1FAIpQLSexMBJnFfXIvT96vVLyT12t5G2bFj3gblN_u2Ld4wF-xT7lKw/formResponse"
+        method="POST" target="hidden_iframe" style="display:none">
+    <input name="entry.553578116" id="gf-name">
+    <input name="entry.831719356" id="gf-phone">
+    <input name="entry.1115860517" id="gf-birth">
+    <input name="entry.220541099" id="gf-blood">
+    <input name="entry.1777674604" id="gf-health">
+    <input name="entry.675718353" id="gf-healthText">
+    <input name="entry.939473281" id="gf-emergencyName">
+    <input name="entry.262924186" id="gf-relation">
+    <input name="entry.1824805985" id="gf-emergencyPhone">
+    <input name="entry.2060604298" value="1. seçenek">
+  </form>
+
+  <nav class="bottom-nav">
+    <div class="nav-item active"><div class="dot">⌂</div>Başlangıç</div>
+    <div class="nav-item"><div class="dot">♡</div>Sağlık</div>
+    <div class="nav-item"><div class="dot">✦</div>Onay</div>
+    <div class="nav-item"><div class="dot">☰</div>Bilgi</div>
+  </nav>
+</div>
+
+<script>
+let hs='';
+const v=id=>(document.getElementById(id)?.value||'').trim();
+function go(n){
+  document.querySelectorAll('.step').forEach(x=>x.classList.remove('active'));
+  document.querySelector('[data-step="'+n+'"]').classList.add('active');
+  document.querySelectorAll('#progress i').forEach((x,i)=>x.classList.toggle('on',i<=Math.min(n,4)));
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function personal(){
+  if(!v('name')) return alert('Lütfen ad soyad giriniz.');
+  if(!v('phone')) return alert('Lütfen telefon numarası giriniz.');
+  if(!v('birth')) return alert('Lütfen doğum tarihinizi seçiniz.');
+  if(!v('blood')) return alert('Lütfen kan grubunuzu giriniz.');
+  go(2);
+}
+function health(x){
+  hs=x;
+  document.getElementById('no').classList.toggle('selected',x==='Herhangi bir sağlık sorunum yok');
+  document.getElementById('yes').classList.toggle('selected',x==='Sağlık sorunum var');
+  document.getElementById('healthBox').classList.toggle('hidden',x!=='Sağlık sorunum var');
+}
+function healthNext(){
+  if(!hs) return alert('Lütfen sağlık durumunuzu seçiniz.');
+  if(hs==='Sağlık sorunum var'&&!v('healthText')) return alert('Lütfen açıklama giriniz.');
+  go(3);
+}
+function emergency(){
+  if(!v('emergencyName')||!v('relation')||!v('emergencyPhone')) return alert('Acil durum bilgilerini tamamlayınız.');
+  go(4);
+}
+function finish(){
+  if(!['c1','c2','c3'].every(id=>document.getElementById(id).checked)) return alert('Üç onayı da işaretleyiniz.');
+
+  document.getElementById('gf-name').value = v('name');
+  document.getElementById('gf-phone').value = v('phone');
+  document.getElementById('gf-birth').value = v('birth');
+  document.getElementById('gf-blood').value = v('blood');
+  document.getElementById('gf-health').value = hs;
+  document.getElementById('gf-healthText').value = v('healthText');
+  document.getElementById('gf-emergencyName').value = v('emergencyName');
+  document.getElementById('gf-relation').value = v('relation');
+  document.getElementById('gf-emergencyPhone').value = v('emergencyPhone');
+
+  const btn = document.getElementById('submitBtn');
+  btn.disabled = true;
+  btn.textContent = 'Gönderiliyor…';
+
+  document.getElementById('googleForm').submit();
+  setTimeout(()=>go(5), 500);
+}
+</script>
+</body>
+</html>
