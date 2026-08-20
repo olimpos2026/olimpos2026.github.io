@@ -1596,6 +1596,148 @@ p,.intro-lead{color:#6d7774}
   box-shadow:0 16px 34px rgba(125,140,255,.14);
 }
 
+
+/* PROGRAM TIMELINE V7 */
+.program-summary{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+  margin:18px 0 22px;
+}
+.program-summary > div{
+  min-width:0;
+  padding:12px 10px;
+  border-radius:15px;
+  background:#f8f9fb;
+  border:1px solid #e9edf0;
+}
+.program-summary span{
+  display:block;
+  font-size:8.5px;
+  font-weight:900;
+  letter-spacing:.11em;
+  color:#9aa2ac;
+  margin-bottom:4px;
+}
+.program-summary b{
+  display:block;
+  font-size:11.5px;
+  line-height:1.25;
+  color:#2b3431;
+}
+.day-head{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin:4px 0 4px;
+}
+.day-head.second-day{margin-top:22px}
+.day-head span{
+  white-space:nowrap;
+  font-size:9.5px;
+  font-weight:900;
+  letter-spacing:.14em;
+  color:#5f6965;
+}
+.day-head i{
+  display:block;
+  height:1px;
+  flex:1;
+  background:linear-gradient(90deg,rgba(125,140,255,.34),rgba(242,154,199,.18),transparent);
+}
+.program-timeline{
+  position:relative;
+}
+.program-row{
+  display:grid;
+  grid-template-columns:54px 1fr;
+  gap:14px;
+  position:relative;
+  padding:15px 0;
+  border-bottom:1px solid #edf0f2;
+}
+.program-row::before{
+  content:"";
+  position:absolute;
+  left:51px;
+  top:24px;
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  background:#fff;
+  border:2px solid #8b97ff;
+  box-shadow:0 0 0 4px rgba(139,151,255,.08);
+  transform:translateX(-50%);
+}
+.program-row:not(:last-child)::after{
+  content:"";
+  position:absolute;
+  left:51px;
+  top:32px;
+  bottom:-8px;
+  width:1px;
+  background:linear-gradient(180deg,rgba(139,151,255,.42),rgba(242,154,199,.18));
+}
+.program-time{
+  padding-top:1px;
+  text-align:left;
+  font-size:10px;
+  line-height:1.25;
+  font-weight:900;
+  letter-spacing:.04em;
+  color:#7f8994;
+}
+.program-content{
+  padding-left:6px;
+}
+.program-content b{
+  display:block;
+  font-size:14.5px;
+  line-height:1.25;
+  letter-spacing:-.01em;
+  color:#1f2826;
+  margin-bottom:5px;
+}
+.program-content span{
+  display:block;
+  color:#6d7774;
+  font-size:11.8px;
+  line-height:1.52;
+}
+.final-row{
+  border-bottom:0;
+}
+.brand-quote{
+  margin:22px 0 16px;
+  padding:18px 16px;
+  border-radius:18px;
+  background:
+    linear-gradient(135deg,rgba(105,221,255,.10),rgba(125,140,255,.10),rgba(242,154,199,.09),rgba(244,210,138,.10));
+  border:1px solid #e7e9f0;
+}
+.brand-quote strong{
+  display:block;
+  font-size:15px;
+  line-height:1.4;
+  letter-spacing:-.015em;
+  color:#29312f;
+}
+.brand-quote span{
+  display:block;
+  margin-top:8px;
+  font-size:9px;
+  line-height:1.45;
+  font-weight:850;
+  letter-spacing:.09em;
+  text-transform:uppercase;
+  color:#858e8a;
+}
+@media(max-width:355px){
+  .program-summary{grid-template-columns:1fr}
+  .program-row{grid-template-columns:50px 1fr;gap:10px}
+  .program-row::before,.program-row:not(:last-child)::after{left:47px}
+}
+
 </style>
 </head>
 <body>
@@ -1623,59 +1765,109 @@ p,.intro-lead{color:#6d7774}
 
     <div class="step active" data-step="0">
       <div class="card intro-card ux-intro">
-        <div class="eyebrow">Kamp Deneyimi</div>
-        <h2>İki gün. Dört yaratıcı deneyim. Tek Olimpos hikâyesi.</h2>
-        <p class="intro-lead">Forma geçmeden önce kampın ana akışını gör. Üretimden sahneye, sahneden gece finaline uzanan deneyim aşağıdaki sırayla ilerliyor.</p>
+        <div class="eyebrow">PROGRAM AKIŞI</div>
+        <h2>Olimpos Tanrıları deneyimi nasıl ilerliyor?</h2>
+        <p class="intro-lead">İki güne yayılan üretim, sahne ve kamp deneyiminin tüm akışı aşağıda. Forma geçmeden önce programı hızlıca inceleyebilirsin.</p>
 
-        <div class="meta-row">
-          <div class="meta-item">
-            <span>TARİH</span>
-            <b>5–6 Eylül</b>
+        <div class="program-summary">
+          <div>
+            <span>BAŞLANGIÇ</span>
+            <b>5 Eylül · 14.00</b>
           </div>
-          <div class="meta-divider"></div>
-          <div class="meta-item">
-            <span>KATILIM</span>
-            <b>Sınırlı kontenjan</b>
+          <div>
+            <span>BİTİŞ</span>
+            <b>6 Eylül · 12.00</b>
           </div>
-        </div>
-
-        <div class="section-label">ETKİNLİK AKIŞI</div>
-
-        <div class="experience-timeline">
-          <div class="experience-row">
-            <div class="experience-no">01</div>
-            <div class="experience-copy">
-              <b>Tişörtünü Tasarla</b>
-              <span>Seçtiğin tanrı temasına göre tişörtünü dönüştür ve kendi kostümünü oluştur.</span>
-            </div>
-          </div>
-
-          <div class="experience-row">
-            <div class="experience-no">02</div>
-            <div class="experience-copy">
-              <b>Seramik Aksesuarını Tasarla</b>
-              <span>Tanrına özgü sembolü boya, tamamla ve kostümünün karakterini güçlendir.</span>
-            </div>
-          </div>
-
-          <div class="experience-row">
-            <div class="experience-no">03</div>
-            <div class="experience-copy">
-              <b>Defilede Sahneye Çık</b>
-              <span>Hazırladığın karakterle sahneye çık, yürüyüşünü yap ve Olimpos atmosferini tamamla.</span>
-            </div>
-          </div>
-
-          <div class="experience-row">
-            <div class="experience-no">04</div>
-            <div class="experience-copy">
-              <b>DJ Eşliğinde After Party</b>
-              <span>Gecenin finalinde müzik, dans ve sosyalleşmeyle deneyimi birlikte tamamla.</span>
-            </div>
+          <div>
+            <span>TOPLAM</span>
+            <b>22 saat</b>
           </div>
         </div>
 
-        <div class="material-note ux-note">
+        <div class="day-head">
+          <span>5 EYLÜL CUMARTESİ</span>
+          <i></i>
+        </div>
+
+        <div class="program-timeline">
+          <div class="program-row">
+            <div class="program-time">14.00<br>18.00</div>
+            <div class="program-content">
+              <b>Olimpos Atölyesi</b>
+              <span>Tanrı ve tanrıça kimlikleri belirlenir. Bej tunikler seçilen karaktere göre kesilir, bağlanır ve boyanır. Kostümler tamamlanır; her karaktere özel seramik aksesuar hazırlanır.</span>
+            </div>
+          </div>
+
+          <div class="program-row">
+            <div class="program-time">18.00<br>19.00</div>
+            <div class="program-content">
+              <b>Yemek &amp; Mola</b>
+              <span>Atölyeye ara verilir; yemek, dinlenme ve kısa serbest zaman.</span>
+            </div>
+          </div>
+
+          <div class="program-row">
+            <div class="program-time">19.00<br>20.00</div>
+            <div class="program-content">
+              <b>Defileye Hazırlık</b>
+              <span>Kostümlerin son dokunuşları, aksesuarlar, saç ve makyaj hazırlığı ile yürüyüş sıralaması tamamlanır.</span>
+            </div>
+          </div>
+
+          <div class="program-row">
+            <div class="program-time">20.00<br>22.00</div>
+            <div class="program-content">
+              <b>Olimpos Tanrıları Geçidi</b>
+              <span>Tanrılar ve tanrıçalar hazırladıkları karakterlerle sahneye çıkar. Defile, karakter yürüyüşleri, fotoğraf ve video çekimleri gerçekleştirilir.</span>
+            </div>
+          </div>
+
+          <div class="program-row">
+            <div class="program-time">22.00<br>00.00</div>
+            <div class="program-content">
+              <b>DJ After Party</b>
+              <span>Müzik, dans ve gecenin kutlama bölümü.</span>
+            </div>
+          </div>
+
+          <div class="program-row">
+            <div class="program-time">00.00</div>
+            <div class="program-content">
+              <b>Kamp &amp; Serbest Zaman</b>
+              <span>Gece konaklama, dinlenme ve serbest zaman.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="day-head second-day">
+          <span>6 EYLÜL PAZAR</span>
+          <i></i>
+        </div>
+
+        <div class="program-timeline compact">
+          <div class="program-row">
+            <div class="program-time">SABAH</div>
+            <div class="program-content">
+              <b>Uyanış &amp; Kahvaltı</b>
+              <span>Kahvaltı, toparlanma ve kamp alanının düzenlenmesi.</span>
+            </div>
+          </div>
+
+          <div class="program-row final-row">
+            <div class="program-time">12.00</div>
+            <div class="program-content">
+              <b>Olimpos’a Veda &amp; Kamp Bitişi</b>
+              <span>İki günlük deneyimin kapanışı ve kamp alanından ayrılış.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="brand-quote">
+          <strong>Bir tişörtle geleceksin, bir tanrı ya da tanrıça olarak ayrılacaksın.</strong>
+          <span>İyi Ki Sanat Var · Doğada Sanat Var · Olimpos Tanrıları</span>
+        </div>
+
+        <div class="ux-note">
           <b>Malzemeler bizden.</b>
           <span>Tüm üretim ve uygulama malzemeleri İyi Ki Sanat Var ekibi tarafından sağlanır.</span>
         </div>
@@ -1686,7 +1878,7 @@ p,.intro-lead{color:#6d7774}
             <b>Yaklaşık 2 dakika</b>
           </div>
           <div>
-            <span>İÇERİK</span>
+            <span>FORM İÇERİĞİ</span>
             <b>Sağlık · Acil durum · Ödeme · Onay</b>
           </div>
         </div>
@@ -1786,7 +1978,7 @@ p,.intro-lead{color:#6d7774}
         <div class="orb">
 
 </div>
-        <h2>Kaydınız alındı ✅</h2>
+        <h2>Kaydınız alındı </h2>
         <p>Katılım bilgileriniz başarıyla gönderildi.</p>
         <div class="demo-note">Bilgileriniz organizasyon ekibinin kayıt tablosuna iletildi.</div>
       </div>
